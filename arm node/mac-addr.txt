@@ -1,0 +1,5 @@
+wlan0
+Edimax:  74:da:38:65:ff:7a
+
+wlan1
+TP-Link: 50:3e:aa:72:89:58
