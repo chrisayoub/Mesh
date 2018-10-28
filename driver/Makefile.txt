@@ -1,0 +1,8 @@
+Make change to Makefile:
+
+CONFIG_PLATFORM_I386_PC = n
+CONFIG_PLATFORM_BCM2709 = y
+
+Run:
+make all
+sudo make install
