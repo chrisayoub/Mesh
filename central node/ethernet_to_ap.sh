@@ -1,18 +1,19 @@
 # https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md#internet-sharing
+# MUST RUN THIS SCRIPT AS SUDO
 
-sudo apt-get install hostapd bridge-utils
-sudo systemctl stop hostapd
+apt-get install hostapd bridge-utils
+systemctl stop hostapd
 
-sudo echo dhcpcd.conf >> /etc/dhcpcd.conf
+echo dhcpcd.conf >> /etc/dhcpcd.conf
 
-sudo brctl addbr br0
-sudo brctl addif br0 eth0
+brctl addbr br0
+brctl addif br0 eth0
 
-sudo echo interfaces >> /etc/network/interfaces
+echo interfaces >> /etc/network/interfaces
 
-sudo echo hostapd.conf > /etc/hostapd/hostapd.conf
+echo hostapd.conf > /etc/hostapd/hostapd.conf
 
-sudo echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' >> /etc/default/hostapd
+echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' >> /etc/default/hostapd
 
-sudo reboot
+# reboot
 
