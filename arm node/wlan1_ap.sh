@@ -1,8 +1,8 @@
 # https://somesquares.org/blog/2017/10/Raspberry-Pi-router/
 # MUST RUN THIS SCRIPT AS SUDO
 
-# For drivers for WLAN devices:
-# https://www.raspberrypi.org/forums/viewtopic.php?p=1161699#p1161699
+# For drivers for WLAN device:
+# https://www.raspberrypi.org/forums/viewtopic.php?t=219751
 
 apt-get install hostapd
 cat hostapd.conf > /etc/hostapd/hostapd.conf
