@@ -4,14 +4,14 @@
 apt-get install hostapd bridge-utils
 systemctl stop hostapd
 
-echo dhcpcd.conf >> /etc/dhcpcd.conf
+cat dhcpcd.conf >> /etc/dhcpcd.conf
 
 brctl addbr br0
 brctl addif br0 eth0
 
-echo interfaces >> /etc/network/interfaces
+cat interfaces >> /etc/network/interfaces
 
-echo hostapd.conf > /etc/hostapd/hostapd.conf
+cat hostapd.conf > /etc/hostapd/hostapd.conf
 
 echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' >> /etc/default/hostapd
 
