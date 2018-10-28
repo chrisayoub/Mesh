@@ -1,4 +1,0 @@
-# Bridge setup
-auto br0
-iface br0 inet manual
-bridge_ports wlan0 wlan1
