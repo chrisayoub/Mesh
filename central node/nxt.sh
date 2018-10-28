@@ -3,7 +3,7 @@
 sudo apt install libusb-dev ant
 
 echo 'PATH="/opt/lejos/bin:$PATH"' >> ~/.profile
-echo 'NXJ_HOME="/opt/lejos"' >>  ~/.profile
+echo 'export NXJ_HOME="/opt/lejos"' >>  ~/.profile
 
 mkdir /opt/lejos
 tar -zxvf lejos.tar.gz
