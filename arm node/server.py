@@ -16,7 +16,7 @@ class myHandler(BaseHTTPRequestHandler):
 		self.send_response(200)
 		self.end_headers()
 		# Send the html message
-		result = os.system(CMD)
+		result = os.popen(CMD).read()
 		self.wfile.write(str(result))
 		return
 
