@@ -3,6 +3,7 @@
 
 # For drivers for WLAN device:
 # https://www.raspberrypi.org/forums/viewtopic.php?t=219751
+# https://github.com/lwfinger/rtl8188eu
 
 apt-get install hostapd
 cat hostapd.conf > /etc/hostapd/hostapd.conf
