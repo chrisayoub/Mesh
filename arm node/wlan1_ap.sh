@@ -1,4 +1,5 @@
 # https://somesquares.org/blog/2017/10/Raspberry-Pi-router/
+# https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md
 # MUST RUN THIS SCRIPT AS SUDO
 
 # For drivers for WLAN device:
