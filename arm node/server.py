@@ -4,6 +4,7 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import os
 import re
+import json
 
 PORT_NUMBER = 8080
 CMD = 'iw wlan1 station dump'
@@ -21,7 +22,7 @@ class myHandler(BaseHTTPRequestHandler):
 		self.send_response(200)
 		self.end_headers()
 		# Send the html message
-		data = str(os.popen(CMD).read())
+		data = str(os.popen(CMD).read()).strip()
 		lines = data.split('\n')
 
 		result = {}
@@ -30,10 +31,10 @@ class myHandler(BaseHTTPRequestHandler):
 			dev = lines[i]
 			signal = lines[i + 1]
 			devMac = dev.split(' ')[1]
-			signalVal = re.compile("[ \t]").split(signal)[1]
+			signalVal = re.compile("[ \t]").split(signal)[2]
 			result[devMac] = signalVal
 
-		self.wfile.write(str(result))
+		self.wfile.write(json.dumps(result))
 		return
 
 try:
