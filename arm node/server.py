@@ -31,7 +31,8 @@ class myHandler(BaseHTTPRequestHandler):
 			dev = lines[i]
 			signal = lines[i + 1]
 			devMac = dev.split(' ')[1]
-			signalVal = re.compile("[ \t]{2,}").split(signal)[1]
+			signalVal = re.compile("[ \t]").split(signal)[4]
+			signalVal = int(signalVal)
 			result[devMac] = signalVal
 
 		self.wfile.write(json.dumps(result))
