@@ -3,12 +3,17 @@
 #!/usr/bin/python
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import os
+import re
 
 PORT_NUMBER = 8080
 CMD = 'iw wlan1 station dump'
 
 #This class will handles any incoming request from
 #the browser 
+
+# Station xx:xx:xx:xx:xx:xx (on wlan1)
+# 	signal:  	-38 dBm
+
 class myHandler(BaseHTTPRequestHandler):
 	
 	#Handler for the GET requests
@@ -16,7 +21,18 @@ class myHandler(BaseHTTPRequestHandler):
 		self.send_response(200)
 		self.end_headers()
 		# Send the html message
-		result = os.popen(CMD).read()
+		data = str(os.popen(CMD).read())
+		lines = data.split('\n')
+
+		result = {}
+
+		for i in range(0, len(lines), 2):
+			dev = lines[i]
+			signal = lines[i + 1]
+			devMac = dev.split(' ')[1]
+			signalVal = re.compile("[ \t]").split(signal)[1]
+			result[devMac] = signalVal
+
 		self.wfile.write(str(result))
 		return
 
