@@ -18,4 +18,8 @@ public class TestArmNodeMetricService {
         assertFalse(result.isEmpty());
         System.out.println(result);
     }
+
+    @Test
+    public void alwaysPass() {
+    }
 }
