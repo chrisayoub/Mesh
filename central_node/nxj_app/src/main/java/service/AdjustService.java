@@ -74,12 +74,11 @@ public class AdjustService {
         }
     }
 
-    // Assume can get response in about 100 ms
-    // Want to maximize this value!
-
     private String device;
 
     // Get the average of many samples
+    // Assume can get response in about 100 ms
+    // Want to maximize this value!
     private int getDeviceSignalStrength() {
         if (device == null) {
             Map<String, Integer> all = metric.getAllSignals();
