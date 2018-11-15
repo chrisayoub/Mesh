@@ -8,7 +8,8 @@
 - ~~Run web server on startup~~
 - ~~Static IP for both nodes~~, DONE, used router
 - ~~Have code to rotate arm 90 degrees forward and backwards, signaled by USB~~
-- Have some way to initiate the arm movement based on the signal metric
-- Program the arm movement based on the signal (client needs to keep pinging the AP)
-- Automatically run the arm movement based on feedback or intervals
+- ~~Have some way to initiate the adjustment of the arm~~, executed via GET request (Spring Boot)
+- Program the arm movement based on the signal (work on this algorithm more)
+- Create client program that will initiate the adjustment, and the client will then ping the arm node until done
+- Run tests that see if the adjustment gives any noticeable benefit, try with multiple types of network activity
 
