@@ -17,6 +17,8 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+    // Requires 'libjlibnxt.so' in same folder as jar './native/
+    // 'library .so was not found in .../nxj_app/target/native'
     private static void testNxt() throws Exception {
         NXTComm c = NXTCommFactory.createNXTComm(NXTCommFactory.USB);
         NXTInfo[] i = c.search(null);
