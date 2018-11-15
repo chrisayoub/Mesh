@@ -39,18 +39,18 @@ public class AdjustService {
 
         // Closer to 0 is best
         // dB here will never exceed 0
-        int bestSignal = Integer.MIN_VALUE;
+        int oldSignal = Integer.MIN_VALUE;
 
         for (int i = 0; i < MotorService.NUM_POS - 1; i++) {
             int signal = getDeviceSignalStrength();
-            if (signal > bestSignal) {
+            if (signal > oldSignal) {
                 // Got better, keep going
-                // Make sure to update value
-                bestSignal = signal;
             } else {
                 // Got worse, flip direction
                 forward = !forward;
             }
+            // Make sure to update value
+            oldSignal = signal;
             // Includes a delay inherently
             makeMove();
         }
