@@ -1,5 +1,3 @@
-package me.cayoub;
-
 import lejos.nxt.BasicMotorPort;
 import lejos.nxt.MotorPort;
 
