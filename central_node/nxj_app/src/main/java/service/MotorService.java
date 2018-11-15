@@ -18,9 +18,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class MotorService {
 
-    private MotorPort m = MotorPort.A;
-
     public static final int NUM_POS = 4;
+
+    private MotorPort m;
+
+    public MotorService() {
+        try {
+            m = MotorPort.A;
+        } catch (Exception e) {
+            throw new IllegalStateException("Cannot access NXT!");
+        }
+    }
 
     public void forwardTurn() {
         makeTurn(BasicMotorPort.FORWARD);
