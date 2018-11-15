@@ -1,5 +1,8 @@
+package service;
+
 import lejos.nxt.BasicMotorPort;
 import lejos.nxt.MotorPort;
+import org.springframework.stereotype.Service;
 
 /**
  * Example usage:
@@ -12,20 +15,12 @@ import lejos.nxt.MotorPort;
  *         Thread.sleep(2000);
  *     }
  */
-public class MotorController {
+@Service
+public class MotorService {
 
     private MotorPort m = MotorPort.A;
 
-    public static void main(String[] args) throws Exception {
-        MotorController mc = new MotorController();
-
-        for (int i = 0; i < 10; i++) {
-            mc.forwardTurn();
-            Thread.sleep(2000);
-            mc.backwardTurn();
-            Thread.sleep(2000);
-        }
-    }
+    public static final int NUM_POS = 4;
 
     public void forwardTurn() {
         makeTurn(BasicMotorPort.FORWARD);
