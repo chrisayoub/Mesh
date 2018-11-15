@@ -9,7 +9,8 @@
 - ~~Static IP for both nodes~~, DONE, used router
 - ~~Have code to rotate arm 90 degrees forward and backwards, signaled by USB~~
 - ~~Have some way to initiate the adjustment of the arm~~, executed via GET request (Spring Boot)
-- Program the arm movement based on the signal (work on this algorithm more)
+- Program the arm movement based on the signal (work on this algorithm a bit more)
 - Create client program that will initiate the adjustment, and the client will then ping the arm node until done
+- Mount nodes in position, including battery for arm node
 - Run tests that see if the adjustment gives any noticeable benefit, try with multiple types of network activity
 
