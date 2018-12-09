@@ -10,7 +10,7 @@
 - ~~Have code to rotate arm 90 degrees forward and backwards, signaled by USB~~
 - ~~Have some way to initiate the adjustment of the arm~~, executed via GET request (Spring Boot)
 - ~~Program the arm movement based on the signal~~, algorithm divides into eighths and refines as close as possible
-- Make persistent traffic to client during adjustment (endpoint for arm node that makes it ping the client with ICMP at set rate)
+- Make persistent traffic to client during adjustment (endpoint for arm node that makes it ping the client with ICMP at set rate, will request from central node). Need to use: https://askubuntu.com/questions/219609/how-do-i-show-active-dhcp-leases
 - Mount nodes in position, including battery for arm node
 - Testing!
 	- Try and conduct where low 2.4 GHz conflicting signals (report the other signal strengths present)
