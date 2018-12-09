@@ -25,44 +25,37 @@ public class AdjustService {
     }
 
     private static final int DELAY = 2;
-    // Will ping from the client at this same frequency, 100 ms
+    // Will ping the client at this same frequency, 100 ms
     private static final double RTT_TIME = 0.1;
 
+    /**
+     * Adjustment algorithm
+     *
+     * Phase 1: do forward quarter turns until the signal worsens from the original
+     * Phase 2: evaluate the quarter as two options: either split the difference between
+     *          the two quarter marks, or go back to the previous quarter mark, whichever is better
+     */
     private void doAdjust() {
         // Reset device
         device = null;
-        // Reset initial movement
-        forward = true;
 
         // Initial delay
         delay();
 
-        // Closer to 0 is best
-        // dB here will never exceed 0
-        int oldSignal = Integer.MIN_VALUE;
-
-        for (int i = 0; i < MotorService.NUM_POS - 1; i++) {
-            int signal = getDeviceSignalStrength();
-            if (signal > oldSignal) {
-                // Got better, keep going
-            } else {
-                // Got worse, flip direction
-                forward = !forward;
-            }
-            // Make sure to update value
-            oldSignal = signal;
-            // Includes a delay inherently
-            makeMove();
-        }
-    }
-
-    private boolean forward;
-
-    private void makeMove() {
-        if (forward) {
+        // Phase 1: quarter turns
+        int oldSignal = getDeviceSignalStrength();
+        while (true) {
             motor.forwardTurn();
-        } else {
-            motor.backwardTurn();
+            int updatedSignal = getDeviceSignalStrength();
+            if (oldSignal >= updatedSignal) {
+                break;
+            }
+            oldSignal = updatedSignal;
+        }
+        // Phase 2: half-quarter turns
+        motor.backwardHalfTurn();
+        if (oldSignal > getDeviceSignalStrength()) {
+            motor.backwardHalfTurn();
         }
     }
 
@@ -79,6 +72,7 @@ public class AdjustService {
     // Get the average of many samples
     // Assume can get response in about 100 ms
     // Want to maximize this value!
+    // Synchronous, and has implicit delay
     private int getDeviceSignalStrength() {
         if (device == null) {
             Map<String, Integer> all = metric.getAllSignals();
