@@ -9,7 +9,7 @@
 - ~~Static IP for both nodes~~, DONE, used router
 - ~~Have code to rotate arm 90 degrees forward and backwards, signaled by USB~~
 - ~~Have some way to initiate the adjustment of the arm~~, executed via GET request (Spring Boot)
-- Program the arm movement based on the signal (work on this algorithm a bit more)
+- ~~Program the arm movement based on the signal~~, algorithm divides into eighths and refines as close as possible
 - Make persistent traffic to client during adjustment (endpoint for arm node that makes it ping the client with ICMP at set rate)
 - Mount nodes in position, including battery for arm node
 - Testing!
