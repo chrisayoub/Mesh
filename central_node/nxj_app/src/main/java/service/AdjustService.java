@@ -39,6 +39,9 @@ public class AdjustService {
         // Reset device
         device = null;
 
+        // Start pinging device
+        metric.startClientPing();
+
         // Initial delay
         delay();
 
@@ -57,6 +60,9 @@ public class AdjustService {
         if (oldSignal > getDeviceSignalStrength()) {
             motor.backwardHalfTurn();
         }
+
+        // Stop pinging device
+        metric.stopClientPing();
     }
 
     private void delay() {

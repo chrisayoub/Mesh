@@ -39,4 +39,17 @@ public class ArmNodeMetricService {
 
         return Collections.emptyMap();
     }
+
+    public boolean startClientPing() {
+        return doPing(URL + "/start");
+    }
+
+    public boolean stopClientPing() {
+        return doPing(URL + "/stop");
+    }
+
+    private boolean doPing(String url) {
+        ResponseEntity<String> response = new RestTemplate().getForEntity(url, String.class);
+        return response.getStatusCode() == HttpStatus.OK;
+    }
 }

@@ -6,6 +6,7 @@ import service.ArmNodeMetricService;
 import java.util.Map;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnit4.class)
 public class TestArmNodeMetricService {
@@ -17,6 +18,16 @@ public class TestArmNodeMetricService {
         Map<String, Integer> result = svc.getAllSignals();
         assertFalse(result.isEmpty());
         System.out.println(result);
+    }
+
+//    @Test
+    public void testStartPing() {
+        assertTrue(svc.startClientPing());
+    }
+
+//    @Test
+    public void testStopPing() {
+        assertTrue(svc.stopClientPing());
     }
 
     @Test
