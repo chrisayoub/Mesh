@@ -25,10 +25,10 @@ class myHandler(BaseHTTPRequestHandler):
 		self.end_headers()
 
 		if self.path == '/start':
-			self.startPing(self)
+			self.startPing()
 			return
 		elif self.path == '/stop':
-			self.stopPing(self)
+			self.stopPing()
 			return
 
 		# Send the html message
