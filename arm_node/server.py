@@ -56,6 +56,7 @@ class myHandler(BaseHTTPRequestHandler):
 
 	def startPing(self):
 		if self.q.empty():
+			print('Start pinging')
 			self.q.put(0)
 			thr = threading.Thread(target=self.beginPing, args=[self.q])
 			thr.start()
@@ -76,11 +77,13 @@ class myHandler(BaseHTTPRequestHandler):
 		TGT = 50
 		RATE = TGT - TIME
 		while not q.empty(): # This value should be changed, hopefully
+			# print('Ping!')
 			os.popen(PING_CMD)
 			time.sleep(RATE / 1000.0) # Milliseconds
 
 	def stopPing(self):
 		if not self.q.empty():
+			print('Done pinging!')
 			self.q.get()
 
 
