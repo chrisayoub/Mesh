@@ -24,10 +24,6 @@ public class AdjustService {
         executor.submit(this::doAdjust);
     }
 
-    private static final int DELAY = 2;
-    // Will ping the client at this same frequency, 100 ms
-    private static final double RTT_TIME = 0.1;
-
     /**
      * Adjustment algorithm
      *
@@ -101,12 +97,17 @@ public class AdjustService {
             device = all.keySet().iterator().next();
         }
 
-        // Take average value
-        final double LIMIT = DELAY / RTT_TIME;
+        // Take average value of some samples
+        final double LIMIT = 4;
         double total = 0;
         for (int i = 0; i < LIMIT; i++) {
-            System.out.println("Time: " + System.currentTimeMillis());
             total += metric.getSignal(device);
+            // Wait in between each
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         return (int) (total / LIMIT);
     }
