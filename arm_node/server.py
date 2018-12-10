@@ -83,7 +83,8 @@ class myHandler(BaseHTTPRequestHandler):
 
 	def stopPing(self):
 		print('stop ping')
-		self.q.get()
+		if not self.q.empty():
+			self.q.get()
 
 
 try:
