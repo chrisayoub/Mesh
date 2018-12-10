@@ -14,7 +14,7 @@
 - Mount nodes in position, including battery for arm node
 - Testing!
 	- ~~Try and conduct where low 2.4 GHz conflicting signals~~, need to use channels 1 and 6, least interference
-	- Update hostapd of arm node for new channel
+	- ~~Update hostapd of arm node for new channel~~, enabled wireless N
 	- Verify manually that the arm gets to correct position (close to client)
 	- Find method to get current network throughput at the client (maybe autoatically display a graph, too?)
 	- Compare throughput with file read from network (not Internet), before and after adjust in worst-case to best-case
