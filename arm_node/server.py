@@ -70,7 +70,7 @@ class myHandler(BaseHTTPRequestHandler):
 		ip = data.split(' ')[2]
 		print (ip)
 
-		PING_CMD = 'ping -c 1 ' + ip
+		PING_CMD = 'ping -c 1 -W 1' + ip
 		print(PING_CMD)
 		# It takes about 2 ms to do a local ping
 		# Do this at 50 ms rate, lower than 100 ms RTT from central
@@ -78,7 +78,7 @@ class myHandler(BaseHTTPRequestHandler):
 		TGT = 50
 		RATE = TGT / TIME
 		while not q.empty(): # This value should be changed, hopefully
-			os.system(PING_CMD)
+			os.popen(PING_CMD)
 			time.sleep(RATE / 1000.0) # Milliseconds
 		print('Stopped!')
 
