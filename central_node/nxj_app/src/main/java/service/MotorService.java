@@ -23,6 +23,7 @@ public class MotorService {
             is = nxtComm.getInputStream();
             os = nxtComm.getOutputStream();
         } catch (Exception e) {
+            e.printStackTrace();
             throw new IllegalStateException("Cannot access NXT!");
         }
     }

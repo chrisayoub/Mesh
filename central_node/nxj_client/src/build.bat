@@ -1,3 +1,1 @@
-nxjc Main.java
-nxjlink -o Main.nxj Main
-nxjupload Main.nxj
+nxjc Main.java && nxjlink -o Main.nxj Main && nxjupload Main.nxj
