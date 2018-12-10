@@ -79,7 +79,7 @@ class myHandler(BaseHTTPRequestHandler):
 		while self.doPing: # This value should be changed, hopefully
 			os.system(PING_CMD)
 			time.sleep(RATE / 1000.0) # Milliseconds
-			print('Val ' + self.doPing)
+			print('Val ' + str(self.doPing))
 		print('Stopped!')
 
 	def stopPing(self):
