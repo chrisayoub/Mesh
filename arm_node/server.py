@@ -55,7 +55,7 @@ class myHandler(BaseHTTPRequestHandler):
 	q = Queue.Queue()
 
 	def startPing(self):
-		if not self.q.empty():
+		if self.q.empty():
 			self.q.put(0)
 			thr = threading.Thread(target=self.beginPing, args=(q))
 			thr.start()
