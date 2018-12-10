@@ -27,3 +27,4 @@
 	- Larger scale would provide more significant performance difference
 	- Other localization metrics could provide more accurate movement
 	- Different algorithm to accomodate multiple clients, would need to quickly calculate weighted average of all clients, graph algorithms
+	- Does not work if client does not respond to ICMP, maybe expose more instantaneous metrics from PHY
