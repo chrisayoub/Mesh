@@ -41,28 +41,41 @@ public class AdjustService {
 
         // Start pinging device
         metric.startClientPing();
+        System.out.println("Started pinging client");
 
         // Initial delay
+        System.out.println("Waiting a delay...");
         delay();
 
         // Phase 1: quarter turns
+        System.out.println("Phase 1: quarter turns");
         int oldSignal = getDeviceSignalStrength();
+        System.out.println("Original signal: " + oldSignal);
         while (true) {
+            System.out.println("Quarter turned!");
             motor.forwardTurn();
             int updatedSignal = getDeviceSignalStrength();
+            System.out.println("Newest signal: " + updatedSignal);
             if (oldSignal >= updatedSignal) {
                 break;
             }
             oldSignal = updatedSignal;
         }
+        System.out.println();
+
+        System.out.println("Phase 2: half-quarter turns");
         // Phase 2: half-quarter turns
+        System.out.println("Backward half turn");
         motor.backwardHalfTurn();
         if (oldSignal > getDeviceSignalStrength()) {
+            System.out.println("Signal was better before!");
+            System.out.println("ANOTHER backward half turn");
             motor.backwardHalfTurn();
         }
 
         // Stop pinging device
         metric.stopClientPing();
+        System.out.println("Stopped pinging client");
     }
 
     private void delay() {
