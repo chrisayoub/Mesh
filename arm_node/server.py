@@ -7,6 +7,7 @@ import re
 import json
 import threading
 import time
+import Queue
 
 PORT_NUMBER = 8080
 CMD = 'iw wlan1 station dump'
@@ -51,12 +52,11 @@ class myHandler(BaseHTTPRequestHandler):
 		self.wfile.write(json.dumps(result))
 		return
 
-	doPing = True
+	q = Queue.Queue()
 
 	def startPing(self):
-		self.doPing = True
-		thr = threading.Thread(target=self.beginPing)
-		# thr.setDaemon(True)
+		self.q.put(0)
+		thr = threading.Thread(target=self.beginPing, args=(q))
 		thr.start()
 
 	def beginPing(self):
@@ -76,16 +76,14 @@ class myHandler(BaseHTTPRequestHandler):
 		TIME = 2
 		TGT = 50
 		RATE = TGT / TIME
-		while self.doPing: # This value should be changed, hopefully
+		while not self.q.empty(): # This value should be changed, hopefully
 			os.system(PING_CMD)
 			time.sleep(RATE / 1000.0) # Milliseconds
-			print('Val ' + str(self.doPing))
 		print('Stopped!')
 
 	def stopPing(self):
 		print('stop ping')
-		self.doPing = False
-		print(self.doPing)
+		self.q.get()
 
 
 try:
