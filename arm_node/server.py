@@ -55,9 +55,10 @@ class myHandler(BaseHTTPRequestHandler):
 	q = Queue.Queue()
 
 	def startPing(self):
-		self.q.put(0)
-		thr = threading.Thread(target=self.beginPing, args=(q))
-		thr.start()
+		if not self.q.empty():
+			self.q.put(0)
+			thr = threading.Thread(target=self.beginPing, args=(q))
+			thr.start()
 
 	def beginPing(self):
 		# First, get IP of client (assume only one client)
