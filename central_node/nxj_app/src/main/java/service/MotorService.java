@@ -1,69 +1,55 @@
 package service;
 
-import lejos.nxt.BasicMotorPort;
-import lejos.nxt.MotorPort;
+import lejos.pc.comm.*;
 import org.springframework.stereotype.Service;
 
-/**
- * Example usage:
- *
- *     MotorController mc = new MotorController();
- *     for (int i = 0; i < 10; i++) {
- *         mc.forwardTurn();
- *         Thread.sleep(2000);
- *         mc.backwardTurn();
- *         Thread.sleep(2000);
- *     }
- */
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import static common.NXTVars.*;
+
 @Service
 public class MotorService {
 
-    public static final int NUM_POS = 4;
-
-    private MotorPort m;
+    private InputStream is;
+    private OutputStream os;
 
     public MotorService() {
         try {
-            m = MotorPort.A;
+            NXTComm nxtComm = NXTCommFactory.createNXTComm(NXTCommFactory.USB);
+            NXTInfo nxt = nxtComm.search(null)[0];
+            nxtComm.open(nxt);
+            is = nxtComm.getInputStream();
+            os = nxtComm.getOutputStream();
         } catch (Exception e) {
             throw new IllegalStateException("Cannot access NXT!");
         }
     }
 
     public void forwardTurn() {
-        makeTurn(BasicMotorPort.FORWARD);
+        sendMsg(QUARTER_FORWARD);
     }
 
     public void forwardHalfTurn() {
-        makeHalfTurn(BasicMotorPort.FORWARD);
+        sendMsg(HALF_FORWARD);
     }
 
     public void backwardTurn() {
-        makeTurn(BasicMotorPort.BACKWARD);
+        sendMsg(QUARTER_BACKWARD);
     }
 
     public void backwardHalfTurn() {
-        makeHalfTurn(BasicMotorPort.BACKWARD);
+        sendMsg(HALF_BACKWARD);
     }
 
-    private static final int POWER = 5;
-    private static final int DELAY = 2000;
-
-    private void makeTurn(int dir) {
-        makeTurn(dir, DELAY);
-    }
-
-    private void makeHalfTurn(int dir) {
-        makeTurn(dir, DELAY / 2);
-    }
-
-    private void makeTurn(int dir, int delay) {
-        m.controlMotor(POWER, dir);
+    private void sendMsg(int msg) {
         try {
-            Thread.sleep(delay);
-        } catch (InterruptedException e) {
+            os.write(msg);
+            os.flush();
+            is.read(); // ACK
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        m.controlMotor(0, BasicMotorPort.FLOAT);
     }
 }
