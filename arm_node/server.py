@@ -57,10 +57,10 @@ class myHandler(BaseHTTPRequestHandler):
 	def startPing(self):
 		if self.q.empty():
 			self.q.put(0)
-			thr = threading.Thread(target=self.beginPing, args=(self.q,))
+			thr = threading.Thread(target=self.beginPing, args=[self.q])
 			thr.start()
 
-	def beginPing(q, blank):
+	def beginPing(q):
 		# First, get IP of client (assume only one client)
 		IP_CMD = 'cat /var/lib/misc/dnsmasq.leases'
 		data = str(os.popen(IP_CMD).read()).strip()
