@@ -52,8 +52,8 @@ public class AdjustService {
         int oldSignal = getDeviceSignalStrength();
         System.out.println("Original signal: " + oldSignal);
         while (true) {
-            System.out.println("Quarter turned!");
             motor.forwardTurn();
+            System.out.println("Quarter turned!");
             int updatedSignal = getDeviceSignalStrength();
             System.out.println("Newest signal: " + updatedSignal);
             if (oldSignal >= updatedSignal) {
