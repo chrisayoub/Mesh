@@ -24,4 +24,6 @@
 	- Different model of robotics (robot mounted on ceiling on a rail to move back and forth)
 	- Try mesh networking protocol 802.11s, better efficiency? (although, can still access other network because of proper subnetwork)
 	- Higher throughput achievable through more advanced AP features (beamforming would make a bigger difference here)
-
+	- Larger scale would provide more significant performance difference
+	- Other localization metrics could provide more accurate movement
+	- Different algorithm to accomodate multiple clients, would need to quickly calculate weighted average of all clients, graph algorithms
