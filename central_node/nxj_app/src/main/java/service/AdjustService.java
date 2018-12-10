@@ -53,7 +53,7 @@ public class AdjustService {
         System.out.println("Original signal: " + oldSignal);
         while (true) {
             motor.forwardTurn();
-            System.out.println("Quarter turned!");
+            System.out.println("Turned a quarter!");
             int updatedSignal = getDeviceSignalStrength();
             System.out.println("Newest signal: " + updatedSignal);
             if (oldSignal >= updatedSignal) {
@@ -67,10 +67,12 @@ public class AdjustService {
         // Phase 2: half-quarter turns
         System.out.println("Backward half turn");
         motor.backwardHalfTurn();
+        System.out.println("Finished turn");
         if (oldSignal > getDeviceSignalStrength()) {
             System.out.println("Signal was better before!");
             System.out.println("ANOTHER backward half turn");
             motor.backwardHalfTurn();
+            System.out.println("Finished turn");
         }
 
         // Stop pinging device
