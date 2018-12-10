@@ -8,7 +8,7 @@ import java.util.Map;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(JUnit4.class)
+//@RunWith(JUnit4.class)
 public class TestArmNodeMetricService {
 
     private ArmNodeMetricService svc = new ArmNodeMetricService();
@@ -30,7 +30,7 @@ public class TestArmNodeMetricService {
         assertTrue(svc.stopClientPing());
     }
 
-    @Test
+//    @Test
     public void alwaysPass() {
     }
 }
