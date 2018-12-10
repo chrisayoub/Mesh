@@ -17,7 +17,7 @@
 	- ~~Update hostapd of arm node for new channel~~, enabled wireless N
 	- ~~Fix NXT connection so manually do USB, use NXT rotate methods~~
 	- ~~Verify manually that the arm gets to correct position (close to client)~~
-	- Find method to get current network throughput at the client (maybe automatically display a graph, too?)
+	- ~~Find method to get current network throughput at the client (maybe automatically display a graph, too?)~~ https://askubuntu.com/questions/7976/how-do-you-test-the-network-speed-between-two-boxes
 	- Compare throughput with file read from network (not Internet), before and after adjust in worst-case to best-case
 	- Show results for when change occurs DURING the network activity (look for spikes?)
 
