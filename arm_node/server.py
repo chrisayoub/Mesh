@@ -57,10 +57,10 @@ class myHandler(BaseHTTPRequestHandler):
 	def startPing(self):
 		if self.q.empty():
 			self.q.put(0)
-			thr = threading.Thread(target=self.beginPing, args=(q))
+			thr = threading.Thread(target=self.beginPing, args=(self.q))
 			thr.start()
 
-	def beginPing(self):
+	def beginPing(q):
 		# First, get IP of client (assume only one client)
 		IP_CMD = 'cat /var/lib/misc/dnsmasq.leases'
 		data = str(os.popen(IP_CMD).read()).strip()
@@ -77,7 +77,7 @@ class myHandler(BaseHTTPRequestHandler):
 		TIME = 2
 		TGT = 50
 		RATE = TGT / TIME
-		while not self.q.empty(): # This value should be changed, hopefully
+		while not q.empty(): # This value should be changed, hopefully
 			os.system(PING_CMD)
 			time.sleep(RATE / 1000.0) # Milliseconds
 		print('Stopped!')
