@@ -105,6 +105,7 @@ public class AdjustService {
         final double LIMIT = DELAY / RTT_TIME;
         double total = 0;
         for (int i = 0; i < LIMIT; i++) {
+            System.out.println("Time: " + System.currentTimeMillis());
             total += metric.getSignal(device);
         }
         return (int) (total / LIMIT);
