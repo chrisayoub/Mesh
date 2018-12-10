@@ -11,12 +11,12 @@
 - ~~Have some way to initiate the adjustment of the arm~~, executed via GET request (Spring Boot)
 - ~~Program the arm movement based on the signal~~, algorithm divides into eighths and refines as close as possible
 - ~~Make persistent traffic to client during adjustment (endpoint for arm node that makes it ping the client with ICMP at set rate, will request from central node)~~ done, use /start and /stop endpoints
-- Mount nodes in position, including battery for arm node
+- ~~Mount nodes in position, including battery for arm node~~
 - Testing!
 	- ~~Try and conduct where low 2.4 GHz conflicting signals~~, need to use channels 1 and 6, least interference
 	- ~~Update hostapd of arm node for new channel~~, enabled wireless N
 	- Verify manually that the arm gets to correct position (close to client)
-	- Find method to get current network throughput at the client (maybe autoatically display a graph, too?)
+	- Find method to get current network throughput at the client (maybe automatically display a graph, too?)
 	- Compare throughput with file read from network (not Internet), before and after adjust in worst-case to best-case
 	- Show results for when change occurs DURING the network activity (look for spikes?)
 
