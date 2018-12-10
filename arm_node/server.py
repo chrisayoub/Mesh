@@ -27,7 +27,7 @@ class myHandler(BaseHTTPRequestHandler):
 		if self.path == '/start':
 			startPing(self)
 			return
-		else if self.path == '/stop':
+		elif self.path == '/stop':
 			stopPing(self)
 			return
 
