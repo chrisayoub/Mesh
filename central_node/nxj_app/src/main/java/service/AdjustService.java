@@ -78,9 +78,10 @@ public class AdjustService {
         System.out.println("Stopped pinging client");
     }
 
+    // Wait a second
     private void delay() {
         try {
-            TimeUnit.SECONDS.sleep(DELAY);
+            TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
