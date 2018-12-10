@@ -19,5 +19,9 @@
 	- ~~Verify manually that the arm gets to correct position (close to client)~~
 	- ~~Find method to get current network throughput at the client (maybe automatically display a graph, too?)~~ https://askubuntu.com/questions/7976/how-do-you-test-the-network-speed-between-two-boxes
 	- ~~Compare throughput with file read from network (not Internet), before and after adjust in worst-case to best-case~~
-	- Show results for when change occurs DURING the network activity (look for spikes?)
+- Future improvments
+	- Battery will eventually run out, can this be wired manually?
+	- Different model of robotics (robot mounted on ceiling on a rail to move back and forth)
+	- Try mesh networking protocol 802.11s, better efficiency? (although, can still access other network because of proper subnetwork)
+	- Higher throughput achievable through more advanced AP features (beamforming would make a bigger difference here)
 
