@@ -5,6 +5,8 @@ from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import os
 import re
 import json
+import threading
+import time
 
 PORT_NUMBER = 8080
 CMD = 'iw wlan1 station dump'
@@ -21,7 +23,16 @@ class myHandler(BaseHTTPRequestHandler):
 	def do_GET(self):
 		self.send_response(200)
 		self.end_headers()
+
+		if self.path == '/start':
+			startPing(self)
+			return
+		else if self.path == '/stop':
+			stopPing(self)
+			return
+
 		# Send the html message
+		# This is for returning JSON for device signal strength
 		data = str(os.popen(CMD).read()).strip()
 		lines = data.split('\n')
 
@@ -37,6 +48,36 @@ class myHandler(BaseHTTPRequestHandler):
 
 		self.wfile.write(json.dumps(result))
 		return
+
+	doPing = True
+
+	def startPing(self):
+		self.doPing = True
+		thr = threading.Thread(target=beginPing, args=(self))
+		thr.setDaemon(True)
+		thr.start()
+
+	def beginPing(self):
+		# First, get IP of client (assume only one client)
+		IP_CMD = 'cat /var/lib/misc/dnsmasq.leases'
+		data = str(os.popen(IP_CMD).read()).strip()
+		if data == '':
+			return
+		ip = data.split(' ')[2]
+
+		PING_CMD = 'ping -c 1 ' + ip
+		# It takes about 2 ms to do a local ping
+		# Do this at 50 ms rate, lower than 100 ms RTT from central
+		TIME = 2
+		TGT = 50
+		RATE = TGT / TIME
+		while self.doPing: # This value should be changed, hopefully
+			os.system(PING_CMD)
+			time.sleep(RATE / 1000.0) # Milliseconds
+
+	def stopPing(self):
+		self.doPing = False
+
 
 try:
 	#Create a web server and define the handler to manage the
