@@ -70,7 +70,7 @@ class myHandler(BaseHTTPRequestHandler):
 		ip = data.split(' ')[2]
 		print (ip)
 
-		PING_CMD = 'ping -c 1 -W 1' + ip
+		PING_CMD = 'ping -c 1 -W 1 ' + ip
 		print(PING_CMD)
 		# It takes about 2 ms to do a local ping
 		# Do this at 50 ms rate, lower than 100 ms RTT from central
