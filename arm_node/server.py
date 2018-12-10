@@ -72,9 +72,9 @@ class myHandler(BaseHTTPRequestHandler):
 		PING_CMD = 'ping -c 1 -W 1 ' + ip
 		print(PING_CMD)
 		# It takes about 10 ms to do a local ping
-		# Do this at 50 ms rate, lower than 100 ms RTT from central
+		# Do this at 250 ms rate, lower than 100 ms RTT from central
 		TIME = 10
-		TGT = 50
+		TGT = 250
 		RATE = TGT - TIME
 		while not q.empty(): # This value should be changed, hopefully
 			# print('Ping!')
