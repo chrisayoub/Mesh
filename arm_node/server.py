@@ -34,6 +34,8 @@ class myHandler(BaseHTTPRequestHandler):
 		# Send the html message
 		# This is for returning JSON for device signal strength
 		data = str(os.popen(CMD).read()).strip()
+		if data == '':
+			return
 		lines = data.split('\n')
 
 		result = {}
