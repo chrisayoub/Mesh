@@ -64,6 +64,6 @@ public class MotorService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        m.controlMotor(0, BasicMotorPort.STOP);
+        m.controlMotor(0, BasicMotorPort.FLOAT);
     }
 }
