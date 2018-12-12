@@ -1,0 +1,21 @@
+Position 1 - 8.5 ft from central axis, no obstructions
+- Initial: 41.8 Mb/s
+- Test 1: 47.2 Mb/s
+- Test 2: 44.1 Mb/s
+- Test 3: 43.2 Mb/s 
+
+Position 2 - 18 ft, behind a door and furniture
+- Initial: 45.9 Mb/s
+- Test 1: 45.8 Mb/s
+- Test 2: 46.1 Mb/s
+- Test 3: 45.4 Mb/s
+
+Position 3 - 3 ft, no obstructions
+- Initial: 47.6 Mb/s
+- Test 1: 47.9 Mb/s
+- Test 2: 47.7 Mb/s
+- Test 3: 47.8 Mb/s
+
+
+Findings: in every case, the arm got physically closest to the client, yet in some cases, did not recieve a performance increase. Would be much more beneficial in 60 Ghz networks (interference-sensitive). Throughput much higher when arm node transmits and client responds, client devices not optimized for transmitting?
+
